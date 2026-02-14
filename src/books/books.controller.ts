@@ -15,21 +15,25 @@ export class BooksController {
         return this.booksService.findAll();
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get(':id')
     findOne(@Param('id') id: number){
         return this.booksService.findOne(+id);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Post()
     create(@Body() bookDto: BookDto){
         return this.booksService.create(bookDto);    
     }
     
+    @UseGuards(JwtAuthGuard)
     @Put(':id')
     update(@Param('id') id: number, @Body() bookDto: BookDto) {
         return this.booksService.update(+id, bookDto);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Delete(':id')
     remove(@Param('id') id: number) {
         return this.booksService.remove(+id);
